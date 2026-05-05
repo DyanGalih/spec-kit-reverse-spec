@@ -198,18 +198,24 @@ specs/
 ```
 
 ### 4. Transition to Delivery
-Once the specs are validated, continue with the **Architecture Guard Governed Workflow** to ensure your implementation remains consistent with your architecture and security standards:
 
-```bash
-# 1. Generate a technical plan with memory and security review
-/speckit.architecture-guard.governed-plan
+Because Reverse Spec Kit splits features into separate folders within `specs/`, you should follow a **Per-Feature Branching** strategy to implement them:
 
-# 2. Generate task list with architecture debt detection
-/speckit.architecture-guard.governed-tasks
+1. **Select a Feature**: Identify the folder you want to implement (e.g., `specs/001-user-authentication/`).
+2. **Create a Feature Branch**: Create a branch that matches the feature name.
+   ```bash
+   git checkout -b feature/001-user-authentication
+   ```
+3. **Run Governed Orchestration**: Execute the delivery commands for that specific feature.
+   ```bash
+   # Orchestrated planning and implementation
+   /speckit.architecture-guard.governed-plan
+   /speckit.architecture-guard.governed-tasks
+   /speckit.architecture-guard.governed-implement
+   ```
 
-# 3. Implement feature and run post-implementation architecture review
-/speckit.architecture-guard.governed-implement
-```
+> [!TIP]
+> Keeping branch names aligned with spec folders ensures that **Memory Hub** and **Architecture Guard** can correctly scope their analysis to the active feature context.
 
 ---
 

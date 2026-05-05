@@ -1,12 +1,15 @@
-# Reverse Analysis: [Feature Name]
+## Source Files Reviewed
 
-## Source Patterns
-- **Entry Points:** [e.g. Controllers, Routes]
-- **Data Models:** [e.g. Entities, Tables]
-- **Core Logic:** [e.g. Services, Use Cases]
+## Entry Points
 
-## Behavioral Extraction
-[Detailed breakdown of how the source code currently handles this feature]
+## Runtime Behavior
 
-## Dependencies
-- [Internal/External dependencies identified]
+## Business Rules Found
+
+## Edge Cases Found
+
+## Tests / Docs Evidence
+
+## Confidence Score
+
+## Extraction Notes

@@ -1,14 +1,31 @@
-# Feature: [Feature Name]
+# Feature Specification: [Feature Name]
 
-## Description
-[Brief description of the feature behavior]
+> Draft reconstructed specification generated from source behavior. Validate against source code, tests, docs, and product intent before planning.
 
-## User Stories / Acceptance Criteria
-- [ ] AC 1
-- [ ] AC 2
+## Source Context
 
-## Business Logic
-[Pure behavioral logic, independent of implementation]
+## Target Context
 
-## Constraints
-[Business constraints]
+## User Story
+
+## Functional Requirements
+
+## Non-Functional Requirements
+
+## Domain Rules
+
+## Data Model Expectations
+
+## API / Interface Expectations
+
+## Permission and Access Rules
+
+## Error and Edge Cases
+
+## Acceptance Criteria
+
+## Out of Scope
+
+## Assumptions
+
+## Open Questions

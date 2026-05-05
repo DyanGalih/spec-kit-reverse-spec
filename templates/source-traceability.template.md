@@ -1,9 +1,13 @@
-# Source Traceability: [Feature Name]
+## Feature Behavior
 
-## Code References
-- `[Source Path]:[Lines]`
-- `[Source Path]:[Lines]`
+## Source Evidence
 
-## Logic Mapping
-- [Feature Logic A] -> [Source File X]
-- [Feature Logic B] -> [Source File Y]
+## Source Files
+
+## Tests
+
+## Docs
+
+## Confidence
+
+## Gaps

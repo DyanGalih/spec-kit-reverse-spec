@@ -1,12 +1,28 @@
-# Security Considerations: [Feature Name]
+## Source Security-Relevant Behavior
 
-## Threat Surface
-- [Entry point vulnerabilities]
-- [Data handling risks]
+## Authentication / Authorization
 
-## Existing Controls
-- [Auth/Authz patterns found in source]
-- [Validation logic]
+## Data Exposure Risks
 
-## Recommendations
-- [Suggested security hardening for target stack]
+## Input Validation
+
+## Output Encoding
+
+## Secrets / Credentials
+
+## External Integrations
+
+## File Uploads / Downloads
+
+## Webhooks / Callbacks
+
+## Background Jobs
+
+## Abuse Cases
+
+## Required Security Review
+
+## Recommended Next Command
+
+- `/speckit.security-review.audit` before planning
+- `/speckit.security-review.branch` only after implementation branch changes exist

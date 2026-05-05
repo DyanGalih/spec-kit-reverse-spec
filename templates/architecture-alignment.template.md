@@ -1,16 +1,27 @@
-# Architecture Alignment: [Feature Name]
+## Target Stack
+
+## Source Components
+
+## Target Components
 
 ## Layer Mapping
-| Source Layer | Target Layer | Notes |
-|--------------|--------------|-------|
-| [e.g. Controller] | [e.g. Handler] | |
-| [e.g. Service] | [e.g. Domain Service] | |
 
-## Boundaries
-[Description of module/service boundaries]
+## Business Logic Placement
 
-## Drift Detection
-[Any identified deviations from the Architecture Constitution]
+## Validation Boundary
 
-## Target Stack Alignment
-[Specific considerations for the target stack]
+## Persistence Boundary
+
+## API / Contract Boundary
+
+## Async / Background Boundary
+
+## Integration Boundary
+
+## Security / Trust Boundary
+
+## Architecture Guard Checklist
+
+## Known Drift From Source
+
+## Required Refactor Before Planning

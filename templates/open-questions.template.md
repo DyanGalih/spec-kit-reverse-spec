@@ -1,9 +1,11 @@
-# Open Questions: [Feature Name]
+## Blocking Questions
 
-## Technical Ambiguities
-- [ ] Question 1
-- [ ] Question 2
+## Non-Blocking Questions
 
 ## Product Decisions Needed
-- [ ] Decision 1
-- [ ] Decision 2
+
+## Source Ambiguities
+
+## Architecture Decisions Needed
+
+## Security Decisions Needed

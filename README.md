@@ -1,107 +1,95 @@
-# 🔄 Reverse Spec Kit
+# Reverse Spec Kit
 
-> Reverse-engineer existing OSS repositories into Spec Kit-compatible feature specifications for rebuilding in a different target stack.
+Reverse Spec Kit is a Spec Kit extension for reverse-engineering existing OSS repositories into draft, Spec Kit-compatible feature specifications for a target-stack rebuild.
 
-[![Version](https://img.shields.io/badge/version-0.1.0-22c55e)](extension.yml)
-[![Spec Kit](https://img.shields.io/badge/Spec%20Kit-compatible-2563eb)](https://spec-kit.dev)
-[![Role](https://img.shields.io/badge/role-reverse--engineering-blue)](https://spec-kit.dev)
+It is designed for migration and modernization work where the source repository is useful as behavioral evidence, but the rebuilt system should still be planned with Spec Kit conventions, review gates, and architecture governance.
 
----
+## What It Does
 
-# What Is This?
+- Scans a source repository and inventories likely product features.
+- Extracts draft feature specs from observed source behavior.
+- Maps source components to a target architecture and architecture constitution.
+- Validates generated feature folders for traceability and readiness.
+- Exports reports that hand off to memory, architecture, security, planning, and implementation workflows.
 
-Reverse Spec Kit is a specialized extension designed to bridge the gap between legacy or open-source repositories and modern Spec Kit workflows.
+## What It Does Not Do
 
-It automates the process of extracting **pure behavioral logic** from codebases, mapping it to your project's architecture standards, and generating implementation-ready feature specifications.
+- It does not auto-implement the rebuilt system.
+- It does not treat generated specs as final truth.
+- It does not auto-run `speckit.security-review.branch`.
+- It does not silently preserve the source architecture.
+- It does not replace product review, architecture review, or security review.
 
----
+## Installation
 
-# The Problem It Solves
-
-When rebuilding or migrating applications, developers often struggle with:
-
-* **Hidden Logic**: Business rules buried deep within framework-specific implementations.
-* **Architectural Mismatch**: Difficulty mapping legacy patterns to a new target stack.
-* **Loss of Context**: Missing the "why" behind existing code during manual extraction.
-* **Drift**: Introducing inconsistencies when translating logic from one stack to another.
-
-Reverse Spec Kit treats the source repository as the "Source of Truth" for behavior, extracting it into structured Spec Kit artifacts (`specs/`) while ensuring alignment with your new architecture.
-
----
-
-# What It Actually Does
-
-| Phase          | What Happens                                                | Output                                         |
-| -------------- | ----------------------------------------------------------- | ---------------------------------------------- |
-| **Scan**       | Analyzes source structure and identifies feature patterns   | Feature inventory and source maps              |
-| **Extract**    | Converts source code logic into behavioral specifications   | `specs/NNN-feature/spec.md`                    |
-| **Map**        | Aligns extracted logic with the target stack architecture   | `architecture-alignment.md`                    |
-| **Security**   | Identifies security controls and threat surfaces in source  | `security-considerations.md`                   |
-| **Validate**   | Checks for completeness, ambiguities, and blockers          | Validation reports and status assignments      |
-| **Export**     | Finalizes the specification suite for implementation        | Pipeline and export reports                    |
-
----
-
-# Key Philosophy: Behavior Over Implementation
-
-Reverse Spec Kit follows a strict rule: **Extract what it does, not how it does it.**
-
-The goal is to generate specifications that define *requirements* and *logic*, allowing the AI (via Spec Kit) to implement them correctly in the target stack without being biased by legacy implementation details.
-
----
-
-# Integration Workflow
-
-Reverse Spec Kit is designed to orchestrate governance across the Spec Kit ecosystem:
-
-1. **Memory Synthesis**: Uses `memory-md` to bootstrap the project context and plan the reverse-engineering strategy.
-2. **Reverse Pipeline**: Orchestrates scan, extraction, and mapping.
-3. **Architecture Guard**: Validates that the "Map" results align with your `architecture_constitution.md`.
-4. **Security Review**: Reviews extracted security considerations for the new stack.
-
----
-
-# Quick Start
-
-## 1. Install
+Install locally for development:
 
 ```bash
-cd /path/to/spec-kit-project
+specify extension add --dev /path/to/spec-kit-reverse-spec
+```
+
+Install from GitHub release:
+
+```bash
+specify extension add reverse-spec --from https://github.com/DyanGalih/spec-kit-reverse-spec/archive/refs/tags/v0.1.1.zip
+```
+
+Only use:
+
+```bash
 specify extension add reverse-spec
 ```
 
----
+when the extension is already available in the configured catalog.
 
-## 2. Configure
+## Command Reference
 
-Initialize the `reverse-spec-config.template.yml` to define your source repo and target stack.
+| Command | Purpose |
+| --- | --- |
+| `/speckit.reverse-spec.scan` | Scan a source repository and build a feature inventory. |
+| `/speckit.reverse-spec.extract` | Generate draft reconstructed feature specs. |
+| `/speckit.reverse-spec.map` | Map source architecture to the target stack and constitution. |
+| `/speckit.reverse-spec.validate` | Validate generated feature folders and readiness. |
+| `/speckit.reverse-spec.export` | Finalize specs and produce export reports. |
+| `/speckit.reverse-spec.full-pipeline` | Orchestrate the full reverse-spec workflow without autopilot. |
 
----
+## Full Pipeline
 
-## 3. Run the Pipeline
+Run the pipeline when you want a complete reverse-engineering pass from source inventory to export reports:
 
 ```bash
-/speckit.reverse-spec.full-pipeline --source <repo> --target "<stack>"
+/speckit.reverse-spec.full-pipeline --source ./legacy-app --target "NestJS + PostgreSQL" --mode review-ready
 ```
 
----
+The pipeline stays in draft/review mode. It recommends follow-up governance commands, but it does not implement the feature set for you.
 
-# Commands
+## Output Structure
 
-| Command         | Purpose                                                                 |
-| --------------- | ----------------------------------------------------------------------- |
-| `full-pipeline` | **Orchestrator**. Runs the complete reverse-spec workflow end-to-end.    |
-| `scan`          | Scans the source repository for features and architecture patterns.     |
-| `extract`       | Extracts logic into `specs/` using behavioral templates.                |
-| `map`           | Maps source logic to target stack architecture.                        |
-| `validate`      | Reviews extracted specs for completeness and alignment.                 |
-| `export`        | Generates final pipeline reports and exports the specification suite.   |
+Typical outputs look like this:
 
----
+```text
+.reverse-spec/
+  feature-inventory.md
+  source-map.md
+  assumptions.md
+  scan-report.md
+  validation-report.md
+  export-report.md
+  pipeline-report.md
 
-# Quality Gates
+specs/
+  001-feature-name/
+    spec.md
+    reverse-analysis.md
+    architecture-alignment.md
+    security-considerations.md
+    open-questions.md
+    source-traceability.md
+```
 
-After running the pipeline, the extension provides the exact next commands to transition to delivery:
+## Quality Gates
+
+Reverse Spec Kit assumes these review gates are part of the handoff:
 
 ```text
 /speckit.memory-md.plan-with-memory
@@ -116,110 +104,71 @@ After running the pipeline, the extension provides the exact next commands to tr
 /speckit.memory-md.capture-from-diff
 ```
 
----
+## Integration With Memory-MD
 
-# Installation
+`memory-md` is used to preserve assumptions, source findings, and migration context across the reverse-spec workflow.
 
-## Registry Installation
+- Recommended before pipeline work: `/speckit.memory-md.plan-with-memory`
+- Recommended after artifact generation: `/speckit.memory-md.capture`
+- Recommended after implementation changes exist: `/speckit.memory-md.capture-from-diff`
 
-```bash
-cd /path/to/spec-kit-project
-specify extension add reverse-spec
-```
+## Integration With Architecture-Guard
 
-## GitHub Installation
+`architecture-guard` helps keep reconstructed specs aligned to the target architecture instead of the source implementation.
 
-```bash
-cd /path/to/spec-kit-project
-specify extension add reverse-spec --from \
-  https://github.com/DyanGalih/spec-kit-reverse-spec/archive/refs/tags/v0.1.0.zip
-```
+- Use `/speckit.architecture-guard.architecture-review` after map and validate.
+- Use governed planning and implementation commands only once the spec set is ready for delivery.
 
----
+## Integration With Security-Review
 
-# Relationship to Other Extensions
+`security-review` helps evaluate source behavior, exposed surfaces, and migration risks before implementation.
 
-| Extension          | Responsibility                                           |
-| ------------------ | -------------------------------------------------------- |
-| **Reverse Spec**   | **Extraction**. Source logic → Spec Kit specifications.  |
-| **Memory Hub**     | **Context**. Durable project memory and historical sync. |
-| **Arch Guard**     | **Governance**. Alignment with target architecture.     |
-| **Security Review**| **Validation**. Security auditing of specs and code.     |
+- Use `/speckit.security-review.audit` before planning.
+- Use `/speckit.security-review.branch` only after implementation branch changes exist.
+- Do not treat the reverse-spec export as a security sign-off.
 
----
+## Examples
 
-# Working with Existing Projects
-
-If you are running Reverse Spec Kit on a project that has already been started or uses a specific framework standard:
-
-1. **Architecture Alignment**: The `/speckit.reverse-spec.map` command will prioritize your existing `architecture_constitution.md`. **You do not need to provide a `--target` argument** as the extension will auto-detect your stack from your current project.
-2. **Incremental Porting**: You can target specific features using the `--features` argument to avoid scanning the entire source repo.
-3. **Gap Analysis**: Use the generated `specs/` to identify logic that hasn't been implemented in your new stack yet.
-
----
-
-# Example Usage
-
-## Scenario: Rebuilding a Legacy Express.js API in NestJS
-
-To reverse-engineer a legacy application and prepare it for a new stack, follow this standard execution:
-
-### 1. Preflight
-Ensure your project is initialized with Spec Kit and required extensions.
-
-### 2. Execution
-Run the full pipeline to scan the source repository and generate specifications.
+Reverse-engineer a local repository:
 
 ```bash
-# Using a remote repository
-/speckit.reverse-spec.full-pipeline \
-  --source "https://github.com/DyanGalih/legacy-express-api" \
-  --target "NestJS + PostgreSQL" \
-  --mode "review-ready"
-
-# Running in an existing project (Auto-detects target stack)
-/speckit.reverse-spec.full-pipeline \
-  --source "./legacy-projects/express-api"
+/speckit.reverse-spec.full-pipeline --source ./legacy-app --target "React + Node" --features all --mode draft
 ```
 
-### 3. Review Generated Artifacts
-The pipeline will generate a complete specification suite in the `specs/` directory:
+Focus on a limited feature set:
 
-```text
-specs/
-  001-user-authentication/
-    spec.md
-    reverse-analysis.md
-    architecture-alignment.md
-    security-considerations.md
-    source-traceability.md
-  002-order-processing/
-    ...
+```bash
+/speckit.reverse-spec.extract --source ./legacy-app --target "Next.js + PostgreSQL" --features auth,billing --max-features 3
 ```
 
-### 4. Transition to Delivery
+Run mapping with a constitution file:
 
-Because Reverse Spec Kit splits features into separate folders within `specs/`, you should follow a **Per-Feature Branching** strategy to implement them:
+```bash
+/speckit.reverse-spec.map --target "NestJS + PostgreSQL" --constitution architecture_constitution.md --source ./legacy-app
+```
 
-1. **Select a Feature**: Identify the folder you want to implement (e.g., `specs/001-user-authentication/`).
-2. **Create a Feature Branch**: Create a branch that matches the feature name.
-   ```bash
-   git checkout -b feature/001-user-authentication
-   ```
-3. **Run Governed Orchestration**: Execute the delivery commands for that specific feature.
-   ```bash
-   # Orchestrated planning and implementation
-   /speckit.architecture-guard.governed-plan
-   /speckit.architecture-guard.governed-tasks
-   /speckit.architecture-guard.governed-implement
-   ```
+## Limitations
 
-> [!TIP]
-> Keeping branch names aligned with spec folders ensures that **Memory Hub** and **Architecture Guard** can correctly scope their analysis to the active feature context.
+- Confidence is only as strong as the evidence in routes, tests, docs, and source structure.
+- Low-confidence features may require manual product review.
+- Architecture drift is reported, not repaired automatically.
+- Generated specs are drafts and must be validated before planning.
 
----
+## Troubleshooting
 
-# License
+- If scanning finds too much infrastructure noise, tighten `--exclude` patterns and lower `--depth`.
+- If extraction yields vague features, include tests and docs in the scan.
+- If validation reports blocking questions, resolve them before planning.
+- If the target stack cannot be inferred, provide `--target` explicitly.
 
-[MIT](LICENSE) © [DyanGalih](https://github.com/DyanGalih)
+## Catalog Publishing Notes
 
+- Keep the extension id as `reverse-spec`.
+- Keep the command names stable.
+- Version this release as `0.1.1`.
+- Ship the manifest, command docs, templates, config template, docs, and validation test together.
+- Catalog consumers should install via the release zip once the extension is published.
+
+## License
+
+MIT

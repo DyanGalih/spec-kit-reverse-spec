@@ -1,9 +1,15 @@
-# Validation Report
+## Summary
 
-## Status Summary
-- **READY_FOR_ARCHITECTURE_REVIEW:** [List features]
-- **BLOCKED_BY_OPEN_QUESTIONS:** [List features]
-- **NEEDS_PRODUCT_DECISION:** [List features]
+## Feature Status Table
 
-## Detailed Findings
-[Summary of validation checks per feature]
+## Blocking Issues
+
+## Non-Blocking Issues
+
+## Missing Files
+
+## Architecture Readiness
+
+## Security Readiness
+
+## Recommended Next Commands

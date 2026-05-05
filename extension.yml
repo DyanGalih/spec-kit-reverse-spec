@@ -1,13 +1,51 @@
 schema_version: "1.0"
-id: "reverse-spec"
-version: "0.1.0"
-name: "Reverse Spec Kit"
-description: "Reverse-engineer existing OSS repositories into Spec Kit feature specifications."
-author: "DyanGalih"
-license: "MIT"
+
+extension:
+  id: "reverse-spec"
+  name: "Reverse Spec Kit"
+  version: "0.1.1"
+  description: "Reverse-engineer existing OSS repositories into Spec Kit-compatible feature specifications for target-stack rebuilds."
+  author: "DyanGalih"
+  repository: "https://github.com/DyanGalih/spec-kit-reverse-spec"
+  homepage: "https://github.com/DyanGalih/spec-kit-reverse-spec"
+  license: "MIT"
+
+requires:
+  speckit_version: ">=0.1.0"
+  commands:
+    - "speckit.plan"
+    - "speckit.tasks"
+
+provides:
+  commands:
+    - name: "speckit.reverse-spec.scan"
+      file: "commands/scan.md"
+      description: "Scan a source OSS repository and detect candidate product features."
+    - name: "speckit.reverse-spec.extract"
+      file: "commands/extract.md"
+      description: "Extract detected feature behavior into Spec Kit specification folders."
+    - name: "speckit.reverse-spec.map"
+      file: "commands/map.md"
+      description: "Map source architecture to the target architecture and architecture constitution."
+    - name: "speckit.reverse-spec.validate"
+      file: "commands/validate.md"
+      description: "Validate generated reverse specs before architecture/security review."
+    - name: "speckit.reverse-spec.export"
+      file: "commands/export.md"
+      description: "Finalize generated specs and produce reverse-spec reports."
+    - name: "speckit.reverse-spec.full-pipeline"
+      file: "commands/full-pipeline.md"
+      description: "Orchestrate scan, extract, map, validate, and export without bypassing review gates."
+
+  config:
+    - name: "reverse-spec-config.yml"
+      template: "reverse-spec-config.template.yml"
+      description: "Configuration for source repository, target stack, output paths, and integration gates."
+      required: false
 
 integrates_with:
   - id: "memory-md"
+    repository: "https://github.com/DyanGalih/spec-kit-memory-hub"
     commands:
       - "speckit.memory-md.bootstrap"
       - "speckit.memory-md.plan-with-memory"
@@ -15,37 +53,42 @@ integrates_with:
       - "speckit.memory-md.capture-from-diff"
       - "speckit.memory-md.audit"
       - "speckit.memory-md.log-finding"
+    role: "Durable Markdown memory for assumptions, decisions, source findings, and migration context."
+    required: false
 
   - id: "architecture-guard"
+    repository: "https://github.com/DyanGalih/spec-kit-architecture-guard"
     commands:
+      - "speckit.architecture-guard.init"
       - "speckit.architecture-guard.architecture-review"
+      - "speckit.architecture-guard.violation-detection"
+      - "speckit.architecture-guard.refactor-generator"
+      - "speckit.architecture-guard.architecture-apply"
+      - "speckit.architecture-guard.governed-plan"
+      - "speckit.architecture-guard.governed-tasks"
+      - "speckit.architecture-guard.governed-implement"
+      - "speckit.architecture-guard.architecture-workflow"
+    role: "Architecture validation and governed delivery workflow."
+    required: false
 
   - id: "security-review"
+    repository: "https://github.com/DyanGalih/spec-kit-security-review"
     commands:
       - "speckit.security-review.audit"
+      - "speckit.security-review.staged"
       - "speckit.security-review.branch"
+      - "speckit.security-review.plan"
+      - "speckit.security-review.tasks"
+      - "speckit.security-review.followup"
+      - "speckit.security-review.apply"
+    role: "Security review for specs, plans, tasks, staged changes, branches, and follow-up remediation."
+    required: false
 
-commands:
-  - id: "speckit.reverse-spec.scan"
-    path: "commands/scan.md"
-    description: "Scan the source repository for feature patterns and structure."
-
-  - id: "speckit.reverse-spec.extract"
-    path: "commands/extract.md"
-    description: "Extract feature behavior and logic into specification templates."
-
-  - id: "speckit.reverse-spec.map"
-    path: "commands/map.md"
-    description: "Map source architecture to the target stack architecture."
-
-  - id: "speckit.reverse-spec.validate"
-    path: "commands/validate.md"
-    description: "Validate the reverse-engineered specs for completeness and alignment."
-
-  - id: "speckit.reverse-spec.export"
-    path: "commands/export.md"
-    description: "Export the generated pipeline reports and final specifications."
-
-  - id: "speckit.reverse-spec.full-pipeline"
-    path: "commands/full-pipeline.md"
-    description: "Orchestrate the complete reverse-spec workflow."
+tags:
+  - reverse-engineering
+  - migration
+  - specs
+  - architecture
+  - security
+  - oss
+  - modernization

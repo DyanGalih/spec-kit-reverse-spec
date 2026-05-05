@@ -1,17 +1,29 @@
-# Reverse-Spec Pipeline Report
+## Source Repository
 
-## Execution Summary
-- **Source:** [Source Repo]
-- **Target Stack:** [Target Stack]
-- **Features Processed:** [Count]
+## Target Stack
 
-## Workflow Steps
-1. **Scan:** [Status]
-2. **Extract:** [Status]
-3. **Map:** [Status]
-4. **Security Prep:** [Status]
-5. **Validate:** [Status]
-6. **Export:** [Status]
+## Pipeline Mode
 
-## Next Steps
-[Recommended commands to continue]
+## Optional Integrations Detected
+
+## Optional Integrations Missing
+
+## Features Detected
+
+## Specs Generated
+
+## Architecture Alignment Status
+
+## Security Preparation Status
+
+## Validation Status
+
+## Blocking Issues
+
+## Non-Blocking Issues
+
+## Recommended Next Commands
+
+## Human Review Required
+
+## Memory Capture Summary

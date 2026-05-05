@@ -1,23 +1,60 @@
-# Reverse Spec Configuration Template
+# Reverse Spec configuration template
+
 source:
+  # Local repository path or checkout root to reverse-engineer.
   repo_path: ""
-  language: ""
-  framework: ""
+  # Repository type for orchestration. Keep this "local" for normal development.
+  type: "local"
+  # Include test files when scanning source behavior.
+  include_tests: true
+  # Include docs and examples when scanning source behavior.
+  include_docs: true
+  # Paths excluded from scan and extraction.
+  exclude:
+    - "node_modules/"
+    - "vendor/"
+    - "dist/"
+    - "build/"
+    - ".git/"
 
 target:
+  # Target implementation stack for the rebuild.
   stack: ""
+  # High-level architecture pattern, for example layered, hexagonal, or service-oriented.
   architecture_pattern: ""
+  # Architecture constitution file used by the map step.
+  constitution: "architecture_constitution.md"
 
 output:
-  path: ".reverse-spec"
+  # Working directory for scan, extract, map, validate, and export artifacts.
+  work_dir: ".reverse-spec"
+  # Destination folder for reconstructed feature specs.
   specs_dir: "specs"
+  # Keep false unless you intentionally want to overwrite generated artifacts.
+  overwrite_existing: false
 
 pipeline:
+  # Default pipeline mode for draft reverse-spec generation.
+  mode: "draft"
+  # Cap the number of features per run so review stays manageable.
   max_features: 10
+  # Stop the pipeline when blocking issues are detected.
   stop_on_blockers: true
-  mode: "draft" # draft | review-ready | strict
 
 integrations:
+  # Durable markdown memory support.
   memory_md: true
+  # Architecture guard review support.
   architecture_guard: true
+  # Security review support.
   security_review: true
+
+quality:
+  # Require source traceability for every generated feature.
+  require_source_traceability: true
+  # Require acceptance criteria in every generated spec.
+  require_acceptance_criteria: true
+  # Require architecture alignment before planning.
+  require_architecture_alignment: true
+  # Require security considerations before planning.
+  require_security_considerations: true

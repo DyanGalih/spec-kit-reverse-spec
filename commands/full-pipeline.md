@@ -155,27 +155,37 @@ Use `$ARGUMENTS` to provide the source repository, target stack, and pipeline co
 
 ## Next Recommended Commands
 
-After export completes, choose from:
+Use memory context before running the pipeline:
 
-1. **Full workflow**:
-   - `/speckit.memory-md.plan-with-memory`
-   - `/speckit.memory-md.capture`
-   - `/speckit.architecture-guard.architecture-review`
-   - `/speckit.security-review.audit`
-   - `/speckit.plan`
-   - `/speckit.tasks`
-   - `/speckit.implementation`
-   - `/speckit.security-review.branch`
-   - `/speckit.memory-md.capture-from-diff`
+```text
+/speckit.memory-md.plan-with-memory
+```
 
-2. **Selective gating**:
-   - Review specific feature's architecture in `/speckit.architecture-guard.architecture-review`
-   - Audit security in `/speckit.security-review.audit`
-   - Resolve blocking questions with product team
-   - Proceed to `/speckit.plan`
+Run the full pipeline:
 
-3. **Memory capture** (standalone):
-   - `/speckit.memory-md.capture`
-   - Later: `/speckit.memory-md.capture-from-diff`
+```text
+/speckit.reverse-spec.full-pipeline --source <repo> --target "<stack>"
+```
 
-See `.reverse-spec/pipeline-report.md` for complete command reference.
+After the pipeline completes, continue with:
+
+```text
+/speckit.memory-md.capture
+/speckit.architecture-guard.architecture-review
+/speckit.security-review.audit
+/speckit.plan
+/speckit.tasks
+/speckit.implementation
+/speckit.security-review.branch
+/speckit.memory-md.capture-from-diff
+```
+
+### Notes
+
+* `/speckit.architecture-guard.architecture-review` should run before `/speckit.plan`
+* `/speckit.security-review.audit` should run before `/speckit.plan`
+* `/speckit.security-review.branch` is only for reviewing implementation branch changes after code exists
+* `/speckit.memory-md.capture-from-diff` should run after implementation changes exist
+* Generated specs are **draft reconstructed artifacts**
+* Human review is required before planning and implementation
+* The pipeline orchestrates work but does not bypass architecture, security, or product decision gates

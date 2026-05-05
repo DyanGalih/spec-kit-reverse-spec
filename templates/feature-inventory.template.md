@@ -1,3 +1,5 @@
+# Feature Inventory
+
 ## Summary
 - Source repository: [placeholder]
 - Scan scope: [placeholder]

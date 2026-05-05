@@ -118,5 +118,5 @@ Use `$ARGUMENTS` to supply the source, target, and export scope.
 - `/speckit.plan` — Create implementation plan
 - `/speckit.tasks` — Break down into tasks
 - `/speckit.implementation` — Execute implementation
-- `/speckit.security-review.branch` — Create security branch
+- `/speckit.security-review.branch` — Review implementation branch changes after code exists
 - `/speckit.memory-md.capture-from-diff` — Capture context from changes

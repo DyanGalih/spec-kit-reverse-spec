@@ -27,12 +27,18 @@ Use `/speckit.reverse-spec.export` to stabilize filenames, finalize the draft se
 After export, continue with memory, architecture, and security review commands before planning and implementation.
 
 ```text
+/speckit.memory-md.plan-with-memory
 /speckit.memory-md.capture
 /speckit.architecture-guard.architecture-review
 /speckit.security-review.audit
 /speckit.plan
 /speckit.tasks
+/speckit.implementation
+/speckit.security-review.branch
+/speckit.memory-md.capture-from-diff
 ```
+
+`/speckit.security-review.branch` is only for reviewing implementation branch changes after code exists.
 
 ## Important Rule
 

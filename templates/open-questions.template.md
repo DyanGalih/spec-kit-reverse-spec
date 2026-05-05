@@ -1,3 +1,5 @@
+# Open Questions
+
 ## Blocking Questions
 - [ ] [question that must be answered before planning]
 - [ ] [question with architecture or product impact]

@@ -7,7 +7,7 @@ Reverse Spec Kit is built to cooperate with memory, architecture, and security e
 Use memory-md when you want durable context across a migration or reverse-engineering effort.
 
 - Before pipeline work: `/speckit.memory-md.plan-with-memory`
-- During reverse-spec work: record assumptions and source findings
+- During or after reverse-spec work: run `/speckit.memory-md.capture` to record assumptions, source findings, mappings, and decisions.
 - After source changes exist: `/speckit.memory-md.capture-from-diff`
 
 ## Architecture-Guard

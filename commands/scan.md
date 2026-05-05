@@ -162,4 +162,4 @@ Use `$ARGUMENTS` to supply the source repository and optional scope filters.
 
 - `/speckit.reverse-spec.extract $ARGUMENTS` — Extract draft specs from scanned features.
 - `/speckit.memory-md.plan-with-memory $ARGUMENTS` — If memory-md is installed, review scan results in context before extraction.
-- `/speckit.reverse-spec.full-pipeline $ARGUMENTS` — If you want to run the entire pipeline automatically.
+- `/speckit.reverse-spec.full-pipeline $ARGUMENTS` — Run the entire reverse-spec workflow from scratch instead of continuing step-by-step.

@@ -1,3 +1,5 @@
+# Validation Report
+
 ## Summary
 - Validation mode: [draft / review-ready / strict]
 - Overall status: [placeholder]
@@ -38,5 +40,15 @@
 - Notes: [placeholder]
 
 ## Recommended Next Commands
-- `/speckit.architecture-guard.architecture-review`
-- `/speckit.security-review.audit`
+```text
+/speckit.reverse-spec.export
+/speckit.architecture-guard.architecture-review
+/speckit.security-review.audit
+```
+
+Notes:
+
+- Export generates final handoff reports.
+- Architecture review should happen before `/speckit.plan`.
+- Security audit should happen before `/speckit.plan`.
+- Do not run `/speckit.security-review.branch` until implementation branch changes exist.

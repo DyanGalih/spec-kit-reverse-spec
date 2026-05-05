@@ -101,7 +101,7 @@ Use `$ARGUMENTS` to provide the source, target stack, feature scope, and optiona
 - **Missing `--source` or `--target`**: Stop immediately; both are required.
 - **No scan results and scan fails**: Report which scan step failed; suggest running scan manually first.
 - **Feature not found in inventory**: Report available feature names; suggest checking feature name spelling.
-- **Spec folder already exists**: Overwrite with new content if `--force true`, or skip if `--force false`; default `true`.
+- **Spec folder already exists**: Overwrite with new content and preserve stable numbering; report the conflict if the folder is not writable.
 - **Template file missing**: Use a fallback minimal template and warn user.
 - **Uncertain behavior**: Mark as an open question instead of inventing a requirement.
 

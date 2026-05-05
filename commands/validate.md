@@ -21,7 +21,8 @@ Use `$ARGUMENTS` to provide validation mode and blocker behavior.
 
 - Feature folders exist under `specs/NNN-feature-name/`.
 - Generated files (`spec.md`, `reverse-analysis.md`, `architecture-alignment.md`, `security-considerations.md`, `open-questions.md`, `source-traceability.md`) are readable.
-- Prior extract, map, and optional security review have been completed.
+- Prior extract and map steps have been completed.
+- Security audit is recommended after validation.
 
 ## Procedure
 

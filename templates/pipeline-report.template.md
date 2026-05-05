@@ -1,3 +1,5 @@
+# Reverse Spec Pipeline Report
+
 ## Source Repository
 - [placeholder]
 
@@ -48,10 +50,25 @@
 - [ ] [non-blocking issue]
 
 ## Recommended Next Commands
-- `/speckit.memory-md.capture`
-- `/speckit.architecture-guard.architecture-review`
-- `/speckit.security-review.audit`
-- `/speckit.memory-md.capture-from-diff`
+```text
+/speckit.memory-md.plan-with-memory
+/speckit.reverse-spec.full-pipeline --source <repo> --target "<stack>"
+/speckit.memory-md.capture
+/speckit.architecture-guard.architecture-review
+/speckit.security-review.audit
+/speckit.plan
+/speckit.tasks
+/speckit.implementation
+/speckit.security-review.branch
+/speckit.memory-md.capture-from-diff
+```
+
+Notes:
+
+- Run `/speckit.architecture-guard.architecture-review` before planning.
+- Run `/speckit.security-review.audit` before planning.
+- Run `/speckit.security-review.branch` only after implementation branch changes exist.
+- Generated specs are draft reconstructed specs and require human review.
 
 ## Human Review Required
 - [ ] Yes

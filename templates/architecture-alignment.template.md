@@ -1,3 +1,5 @@
+# Architecture Alignment
+
 ## Target Stack
 - Stack: [placeholder]
 - Runtime / framework: [placeholder]

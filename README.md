@@ -148,6 +148,16 @@ specify extension add reverse-spec --from \
 
 ---
 
+# Working with Existing Projects
+
+If you are running Reverse Spec Kit on a project that has already been started or uses a specific framework standard:
+
+1. **Architecture Alignment**: The `/speckit.reverse-spec.map` command will prioritize your existing `architecture_constitution.md` to ensure extracted logic is mapped to your current project's patterns.
+2. **Incremental Porting**: You can target specific features using the `--features` argument to avoid scanning the entire source repo.
+3. **Gap Analysis**: Use the generated `specs/` to identify logic that hasn't been implemented in your new stack yet.
+
+---
+
 # Example Usage
 
 ## Scenario: Rebuilding a Legacy Express.js API in NestJS
@@ -161,10 +171,16 @@ Ensure your project is initialized with Spec Kit and required extensions.
 Run the full pipeline to scan the source repository and generate specifications.
 
 ```bash
+# Using a remote repository
 /speckit.reverse-spec.full-pipeline \
   --source "https://github.com/DyanGalih/legacy-express-api" \
   --target "NestJS + PostgreSQL" \
   --mode "review-ready"
+
+# OR using a local path
+/speckit.reverse-spec.full-pipeline \
+  --source "./legacy-projects/express-api" \
+  --target "NestJS + PostgreSQL"
 ```
 
 ### 3. Review Generated Artifacts

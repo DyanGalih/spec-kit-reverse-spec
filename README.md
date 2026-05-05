@@ -145,3 +145,56 @@ specify extension add reverse-spec --from \
 | **Memory Hub**     | **Context**. Durable project memory and historical sync. |
 | **Arch Guard**     | **Governance**. Alignment with target architecture.     |
 | **Security Review**| **Validation**. Security auditing of specs and code.     |
+
+---
+
+# Example Usage
+
+## Scenario: Rebuilding a Legacy Express.js API in NestJS
+
+To reverse-engineer a legacy application and prepare it for a new stack, follow this standard execution:
+
+### 1. Preflight
+Ensure your project is initialized with Spec Kit and required extensions.
+
+### 2. Execution
+Run the full pipeline to scan the source repository and generate specifications.
+
+```bash
+/speckit.reverse-spec.full-pipeline \
+  --source "https://github.com/DyanGalih/legacy-express-api" \
+  --target "NestJS + PostgreSQL" \
+  --mode "review-ready"
+```
+
+### 3. Review Generated Artifacts
+The pipeline will generate a complete specification suite in the `specs/` directory:
+
+```text
+specs/
+  001-user-authentication/
+    spec.md
+    reverse-analysis.md
+    architecture-alignment.md
+    security-considerations.md
+    source-traceability.md
+  002-order-processing/
+    ...
+```
+
+### 4. Transition to Delivery
+Once the specs are validated, continue with the Spec Kit delivery workflow:
+
+```bash
+/speckit.architecture-guard.architecture-review
+/speckit.plan
+/speckit.tasks
+/speckit.implementation
+```
+
+---
+
+# License
+
+[MIT](LICENSE) © [DyanGalih](https://github.com/DyanGalih)
+

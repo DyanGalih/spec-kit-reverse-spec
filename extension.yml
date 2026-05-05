@@ -3,7 +3,7 @@ schema_version: "1.0"
 extension:
   id: "reverse-spec"
   name: "Reverse Spec Kit"
-  version: "0.1.1"
+  version: "0.1.2"
   description: "Reverse-engineer existing OSS repositories into Spec Kit-compatible feature specifications for target-stack rebuilds."
   author: "DyanGalih"
   repository: "https://github.com/DyanGalih/spec-kit-reverse-spec"

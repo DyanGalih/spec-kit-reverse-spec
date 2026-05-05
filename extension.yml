@@ -1,0 +1,51 @@
+schema_version: "1.0"
+id: "reverse-spec"
+version: "0.1.0"
+name: "Reverse Spec Kit"
+description: "Reverse-engineer existing OSS repositories into Spec Kit feature specifications."
+author: "DyanGalih"
+license: "MIT"
+
+integrates_with:
+  - id: "memory-md"
+    commands:
+      - "speckit.memory-md.bootstrap"
+      - "speckit.memory-md.plan-with-memory"
+      - "speckit.memory-md.capture"
+      - "speckit.memory-md.capture-from-diff"
+      - "speckit.memory-md.audit"
+      - "speckit.memory-md.log-finding"
+
+  - id: "architecture-guard"
+    commands:
+      - "speckit.architecture-guard.architecture-review"
+
+  - id: "security-review"
+    commands:
+      - "speckit.security-review.audit"
+      - "speckit.security-review.branch"
+
+commands:
+  - id: "speckit.reverse-spec.scan"
+    path: "commands/scan.md"
+    description: "Scan the source repository for feature patterns and structure."
+
+  - id: "speckit.reverse-spec.extract"
+    path: "commands/extract.md"
+    description: "Extract feature behavior and logic into specification templates."
+
+  - id: "speckit.reverse-spec.map"
+    path: "commands/map.md"
+    description: "Map source architecture to the target stack architecture."
+
+  - id: "speckit.reverse-spec.validate"
+    path: "commands/validate.md"
+    description: "Validate the reverse-engineered specs for completeness and alignment."
+
+  - id: "speckit.reverse-spec.export"
+    path: "commands/export.md"
+    description: "Export the generated pipeline reports and final specifications."
+
+  - id: "speckit.reverse-spec.full-pipeline"
+    path: "commands/full-pipeline.md"
+    description: "Orchestrate the complete reverse-spec workflow."

@@ -1,0 +1,23 @@
+# Reverse Spec Configuration Template
+source:
+  repo_path: ""
+  language: ""
+  framework: ""
+
+target:
+  stack: ""
+  architecture_pattern: ""
+
+output:
+  path: ".reverse-spec"
+  specs_dir: "specs"
+
+pipeline:
+  max_features: 10
+  stop_on_blockers: true
+  mode: "draft" # draft | review-ready | strict
+
+integrations:
+  memory_md: true
+  architecture_guard: true
+  security_review: true

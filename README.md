@@ -152,7 +152,7 @@ specify extension add reverse-spec --from \
 
 If you are running Reverse Spec Kit on a project that has already been started or uses a specific framework standard:
 
-1. **Architecture Alignment**: The `/speckit.reverse-spec.map` command will prioritize your existing `architecture_constitution.md` to ensure extracted logic is mapped to your current project's patterns.
+1. **Architecture Alignment**: The `/speckit.reverse-spec.map` command will prioritize your existing `architecture_constitution.md`. **You do not need to provide a `--target` argument** as the extension will auto-detect your stack from your current project.
 2. **Incremental Porting**: You can target specific features using the `--features` argument to avoid scanning the entire source repo.
 3. **Gap Analysis**: Use the generated `specs/` to identify logic that hasn't been implemented in your new stack yet.
 
@@ -177,10 +177,9 @@ Run the full pipeline to scan the source repository and generate specifications.
   --target "NestJS + PostgreSQL" \
   --mode "review-ready"
 
-# OR using a local path
+# Running in an existing project (Auto-detects target stack)
 /speckit.reverse-spec.full-pipeline \
-  --source "./legacy-projects/express-api" \
-  --target "NestJS + PostgreSQL"
+  --source "./legacy-projects/express-api"
 ```
 
 ### 3. Review Generated Artifacts
@@ -199,13 +198,17 @@ specs/
 ```
 
 ### 4. Transition to Delivery
-Once the specs are validated, continue with the Spec Kit delivery workflow:
+Once the specs are validated, continue with the **Architecture Guard Governed Workflow** to ensure your implementation remains consistent with your architecture and security standards:
 
 ```bash
-/speckit.architecture-guard.architecture-review
-/speckit.plan
-/speckit.tasks
-/speckit.implementation
+# 1. Generate a technical plan with memory and security review
+/speckit.architecture-guard.governed-plan
+
+# 2. Generate task list with architecture debt detection
+/speckit.architecture-guard.governed-tasks
+
+# 3. Implement feature and run post-implementation architecture review
+/speckit.architecture-guard.governed-implement
 ```
 
 ---

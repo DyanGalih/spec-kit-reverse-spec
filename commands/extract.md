@@ -3,7 +3,7 @@
 Extract feature behavior and logic into specification templates.
 
 ## Arguments
---source (required): Path to the source repository.
+--source (required): Path to the source repository or local directory.
 --features (default: all): Specific features to extract.
 --max-features: Limit the number of features extracted.
 

@@ -3,7 +3,7 @@
 Map source architecture to the target stack architecture.
 
 ## Arguments
---target (required): The target stack/architecture pattern.
+--target (optional): The target stack/architecture pattern. Auto-detected from current project if available.
 --constitution (default: architecture_constitution.md): Reference for architectural rules.
 
 ## Behavior

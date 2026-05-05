@@ -3,7 +3,7 @@
 Scan the source repository for feature patterns and structure.
 
 ## Arguments
---source (required): Path to the source repository.
+--source (required): Path to the source repository or local directory.
 --output (default: .reverse-spec): Output directory for scan results.
 
 ## Behavior

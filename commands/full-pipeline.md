@@ -3,8 +3,8 @@
 Orchestrate the complete reverse-spec workflow WITHOUT breaking Spec Kit philosophy.
 
 ## Arguments
---source (required)
---target (required)
+--source (required): Remote repository URL or local directory path.
+--target (optional): Target stack/architecture. Auto-detected if running in an existing Spec Kit project.
 --output (default: .reverse-spec)
 --features (default: all)
 --max-features

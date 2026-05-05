@@ -1,5 +1,36 @@
+# Git and version control
 .git/
+.gitignore
+CHANGELOG.md
+
+# Node.js
 node_modules/
+
+# Python cache and testing
+__pycache__/
+*.pyc
+tests/
+
+# OS
 .DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# CI/CD
+.github/
+
+# Project working directories (user-specific, not for installation)
 .reverse-spec/
 specs/
+.specify/
+.claude/
+
+# Documentation source (keep only the built README)
+docs/
+
+# Development
+.env
+.env.local

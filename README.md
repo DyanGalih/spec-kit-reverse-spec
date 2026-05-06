@@ -2,10 +2,13 @@
 
 Reverse Spec reverse-engineers OSS repositories into Spec Kit-compatible feature specs for rebuilding in a target stack.
 
-![Version](https://img.shields.io/badge/version-0.1.1-22c55e)
+![Version](https://img.shields.io/badge/version-0.1.2-22c55e)
 ![Spec Kit](https://img.shields.io/badge/Spec%20Kit-compatible-2563eb)
 ![Reverse Engineering](https://img.shields.io/badge/role-reverse--engineering-blue)
 ![License](https://img.shields.io/badge/license-MIT-f59e0b)
+![Status](https://img.shields.io/badge/status-Alpha-ff9800)
+
+> ⚠️ **ALPHA STATUS**: This extension is still in early development (v0.1.2). Features, command structure, and file formats may change. Please report issues and provide feedback on [GitHub](https://github.com/DyanGalih/spec-kit-reverse-spec/issues).
 
 ## Overview
 
@@ -25,7 +28,7 @@ It is intended for migration and modernization work where the source repository 
 ## What This Extension Does Not Do
 
 - It does not generate implementation.
-- It does not auto-run `/speckit.implementation`.
+- It does not auto-run `/speckit.implement`.
 - It does not auto-fix architecture.
 - It does not replace human or product validation.
 - It does not blindly preserve source architecture.
@@ -54,7 +57,7 @@ specify extension add --dev /path/to/spec-kit-reverse-spec
 ### Install from GitHub Release
 
 ```bash
-specify extension add reverse-spec --from https://github.com/DyanGalih/spec-kit-reverse-spec/archive/refs/tags/v0.1.1.zip
+specify extension add reverse-spec --from https://github.com/DyanGalih/spec-kit-reverse-spec/archive/refs/tags/v0.1.2.zip
 ```
 
 ### Install from Catalog After Publication
